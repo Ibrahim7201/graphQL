@@ -1,0 +1,62 @@
+
+mutation register{
+  createUser(userData: {firstName:"ali",username:"ali72",lastName:"mohammed",age:25,password:"123456789"}) {
+    age
+    lastName
+  }
+}
+
+mutation login{
+  loginUser(username:"ali2000",password:"123456789"){
+    token
+    error
+  }
+}
+
+mutation createPost{
+  postCreate(token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjA5Mzg5ZWI0OWE5MTM4ZjIzNTUwNzgiLCJpYXQiOjE2NDQ3NzE1OTJ9.WhR8plONAT-jovTl0Rvzpm_sQfuUKg7Wh2IQKHSjopw",content:"First Post")
+}
+
+query getPosts{
+  getMyPosts(token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjA5Mzg5ZWI0OWE5MTM4ZjIzNTUwNzgiLCJpYXQiOjE2NDQ3NzE1OTJ9.WhR8plONAT-jovTl0Rvzpm_sQfuUKg7Wh2IQKHSjopw"){
+    content
+    user {
+      age
+      firstName
+    }
+    comments {
+      commentContent
+    }
+  } 
+}
+
+query getAllPosts{
+  getAllPosts{
+    content
+    user{
+      age
+      firstName
+    }
+    comments {
+      commentContent
+    }
+  }
+}
+
+mutation editPost{
+  postEdit(token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjA5Mzg5ZWI0OWE5MTM4ZjIzNTUwNzgiLCJpYXQiOjE2NDQ3NzQwMzh9.dWmD27w3i9uetaLREDas7xFZ8TK1K8vNRAoyBAqeEhw",newContent:"3a4 Eng.Moataz gaaamed fa4445",postID:"62098a926eb42a1a2a6c405a")
+}
+mutation deletePost{
+  postDelete(token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjA5Mzg5ZWI0OWE5MTM4ZjIzNTUwNzgiLCJpYXQiOjE2NDQ3NzQwMzh9.dWmD27w3i9uetaLREDas7xFZ8TK1K8vNRAoyBAqeEhw",postID:"62098a926eb42a1a2a6c405a")
+}
+
+
+mutation createComment{
+  createComment(token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjA5Mzg5ZWI0OWE5MTM4ZjIzNTUwNzgiLCJpYXQiOjE2NDQ3NzQwMzh9.dWmD27w3i9uetaLREDas7xFZ8TK1K8vNRAoyBAqeEhw",postID:"62095d06e338f9b8eb17a770",commentContent:"Fourth comment")
+}
+
+query getComments{
+  getComments(token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjA5Mzg5ZWI0OWE5MTM4ZjIzNTUwNzgiLCJpYXQiOjE2NDQ3NzQwMzh9.dWmD27w3i9uetaLREDas7xFZ8TK1K8vNRAoyBAqeEhw",postID:"62095d06e338f9b8eb17a770") {
+    commentContent
+  }
+}
